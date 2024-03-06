@@ -1,7 +1,7 @@
 resource "rafay_workload_cd_operator" "operatordemo" {
   metadata {
-    name    = "operator-demo"
-    project = "benny"
+    name    = "operatordemo"
+    project = "demoorg"
   }
   spec {
     repo_local_path = "/tmp/application-repo"
@@ -15,7 +15,7 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     path_match_pattern = "/:project/:namespace/:workload"
     base_path = "common"
     placement_labels = {
-      "owner" = "myteam"
+      "appname" = "echoserver"
     }
 
     include_base_value = true
