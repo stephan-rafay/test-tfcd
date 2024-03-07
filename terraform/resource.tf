@@ -13,13 +13,16 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     #}
 
     path_match_pattern = "/:project/:namespace/:workload"
-    base_path = "common"
-    placement_labels = {
-      "appname" = "echoserver"
-    }
 
-    include_base_value = true
-    delete_action = var.delete_action_value
+    workload {
+      chartname
+      base_path = "common"
+      placement_labels = {
+        "appname" = "echoserver"
+      }
+      include_base_value = true
+      delete_action = var.delete_action_value
+    }
 
   }
   always_run = "${timestamp()}"
