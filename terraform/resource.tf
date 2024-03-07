@@ -15,7 +15,8 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     path_match_pattern = "/:project/:namespace/:workload"
 
     workload {
-      chartname
+      chartname = "hello"
+      version = "0.1.3"
       base_path = "common"
       placement_labels = {
         "appname" = "echoserver"
