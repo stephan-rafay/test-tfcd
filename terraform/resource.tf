@@ -15,8 +15,8 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     
     workload {
       name = "echoserver"
-      helm_chart_version = "0.0.2"
-      helm_chart_name = "echoserver"
+      helm_chart_version = "0.5.0"
+      helm_chart_name = "echo-server"
       path_match_pattern = "/:project/:workload/:namespace"
       base_path = "echoserver-common"
       include_base_value = true
