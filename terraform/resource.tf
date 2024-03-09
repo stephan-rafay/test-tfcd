@@ -12,19 +12,55 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     #  token = var.git_token
     #}
 
-    path_match_pattern = "/:project/:namespace/:workload"
-
+    
     workload {
-      chartname = "hello"
-      version = "0.1.3"
-      base_path = "common"
-      placement_labels = {
-        "appname" = "echoserver"
-      }
+      name = "echoserver"
+      helm_chart_version = "0.0.2"
+      helm_chart_name = "echoserver"
+      path_match_pattern = "/:project/:workload/:namespace"
+      base_path = "echoserver-common"
       include_base_value = true
-      delete_action = var.delete_action_value
+      delete_action = "delete"
+      placement_labels = {
+        "echoserver" = "enabled"
+      }
     }
 
+    workload {
+      name = "httpecho"
+      helm_chart_version = "0.3.4"
+      helm_chart_name = "http-echo"
+      path_match_pattern = "/:project/:workload/:namespace/preview-us"
+      base_path = "httpecho-common"
+      include_base_value = true
+      delete_action = "delete"
+      cluster_names = "benny-tfcd-test1"
+    }
+
+    workload {
+      name = "httpecho"
+      helm_chart_version = "0.3.4"
+      helm_chart_name = "http-echo"
+      path_match_pattern = "/:project/:workload/:namespace/preview-eu"
+      base_path = "httpecho-common"
+      include_base_value = true
+      delete_action = "delete"
+      cluster_names = "benny-tfcd-test2"
+    }
+
+    workload {
+      name = "hello"
+      helm_chart_version = "0.1.3"
+      helm_chart_name = "hello"
+      path_match_pattern = "/:project/:workload/:namespace"
+      base_path = "hello-common"
+      include_base_value = true
+      delete_action = "delete"
+      placement_labels = {
+        "hello" = "enabled"
+      }
+    }
+   
   }
   always_run = "${timestamp()}"
 }
