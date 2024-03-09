@@ -27,7 +27,7 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     }
 
     workload {
-      name = "httpecho"
+      name = "httpecho-us"
       helm_chart_version = "0.3.4"
       helm_chart_name = "http-echo"
       path_match_pattern = "/:project/:workload/:namespace/preview-us"
@@ -38,7 +38,7 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     }
 
     workload {
-      name = "httpecho"
+      name = "httpecho-eu"
       helm_chart_version = "0.3.4"
       helm_chart_name = "http-echo"
       path_match_pattern = "/:project/:workload/:namespace/preview-eu"
