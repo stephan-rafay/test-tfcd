@@ -30,23 +30,28 @@ resource "rafay_workload_cd_operator" "operatordemo" {
       name = "httpecho-us"
       helm_chart_version = "0.3.4"
       helm_chart_name = "http-echo"
-      path_match_pattern = "/:project/:workload/:namespace/preview-us"
+      path_match_pattern = "/:project/:workload/:namespace"
       base_path = "httpecho-common"
       include_base_value = true
       delete_action = "delete"
-      cluster_names = "benny-tfcd-test1"
+      placement_labels = {
+        "httpecho-us" = "enabled"
+      }
     }
 
     workload {
       name = "httpecho-eu"
       helm_chart_version = "0.3.4"
       helm_chart_name = "http-echo"
-      path_match_pattern = "/:project/:workload/:namespace/preview-eu"
+      path_match_pattern = "/:project/:workload/:namespace"
       base_path = "httpecho-common"
       include_base_value = true
       delete_action = "delete"
-      cluster_names = "benny-tfcd-test2"
+        placement_labels = {
+            "httpecho-eu" = "enabled"
+        }
     }
+
 
     workload {
       name = "hello"
