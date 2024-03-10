@@ -15,6 +15,7 @@ resource "rafay_workload_cd_operator" "operatordemo" {
     
     workload {
       name = "echoserver"
+      chart_helm_repo_name = "echo-server"
       helm_chart_version = "0.5.0"
       helm_chart_name = "echo-server"
       path_match_pattern = "/:project/:workload/:namespace"
@@ -47,9 +48,9 @@ resource "rafay_workload_cd_operator" "operatordemo" {
       base_path = "httpecho-common"
       include_base_value = true
       delete_action = "delete"
-        placement_labels = {
-            "httpecho-eu" = "enabled"
-        }
+      placement_labels = {
+        "httpecho-eu" = "enabled"
+      }
     }
 
 
