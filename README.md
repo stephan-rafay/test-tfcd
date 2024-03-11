@@ -42,10 +42,12 @@ The example below demonstrates deploying three applications to projects using th
 
 1. **echoserver:** Deployed using a chart from a Helm repository.
     - The chart is deployed from a Helm repository to all projects.
+    - Set up a Helm repository on the Rafay platform. [Learn more](https://docs.rafay.co/integrations/repositories/overview/)
     - Utilize cluster labels to deploy the workload to specific clusters labeled with `"echoserver" = "enabled"`.
 
 2. **hello:** Deployed using a chart from a Git repository.
-    - The chart is deployed from a Git repository to all projects.
+    - The chart is deployed from a Git repository to all projects. 
+    - Set up a Git repository on the Rafay platform. [Learn more](https://docs.rafay.co/integrations/repositories/overview/)
     - Utilize cluster labels to deploy the workload to specific clusters labeled with `"hello" = "enabled"`.
 
 3. **httpecho-us:** Deployed using a chart from the project folder.
