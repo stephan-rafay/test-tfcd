@@ -31,6 +31,7 @@ resource "rafay_workload_cd_operator" "operatordemo" {
       name = "hello"
       chart_git_repo_path = "/hello-common/hello-0.1.3.tgz"
       chart_git_repo_name = "hello-repo"
+      chart_git_repo_branch = "main" 
       helm_chart_version = "0.1.3"
       helm_chart_name = "hello"
       path_match_pattern = "/:project/:workload/:namespace"
